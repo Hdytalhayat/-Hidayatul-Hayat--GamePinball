@@ -6,12 +6,14 @@ public class Bumper : MonoBehaviour
 {
     public Collider bola;
     public float multiplier;
-
+    [SerializeField] private float score;
+    [SerializeField] private ScoreManager scoreManager;
     public Color color;
     public Color colorDefault;
 
     private Renderer renderer;
     private Animator animator;
+    [SerializeField] private VFXManager vfxManager;
 
     public AudioSource audioSource;
 
@@ -36,8 +38,11 @@ public class Bumper : MonoBehaviour
             animator.SetTrigger("hit");
 
             GetComponent<Renderer>().material.color = color;
+            vfxManager.PlayBumperVFX(collision.transform.position);
 
             audioSource.Play();
+            scoreManager.AddScore(score);
+
         }
 
     }
