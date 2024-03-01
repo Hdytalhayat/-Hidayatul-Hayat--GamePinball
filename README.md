@@ -1,2 +1,0 @@
-# Pinball
- Matrikulasi Pribadi
